@@ -31,7 +31,8 @@
     <img src="kt6a.jpg" />
 </div>
 
-<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js">
-</script>
+<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+
 <link rel="stylesheet" href="style.css">
+
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
