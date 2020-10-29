@@ -33,22 +33,21 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: nfaction/mattofalltrades
+  github: nfaction
   instagram:
-  linkedin:
+  linkedin: matthew-deporter
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: spikebyte
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
+  stackoverflow: users/14539203/spikebyte # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  youtube: nfaction # channel/<your_long_string> or user/<user-name>
 
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
 
