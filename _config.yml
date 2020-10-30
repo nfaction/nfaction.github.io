@@ -29,6 +29,10 @@ logo                     : https://avatars2.githubusercontent.com/u/1879850?s=40
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
+header:
+  overlay_image          : /assets/images/SantaCatalinaBanner.jpg
+  overlay_filter: 0.5
+  caption: "Photo credit: [**Unsplash**](https://www.fs.fed.us/wildflowers/beauty/Sky_Islands/Coronado_NF/SantaCatalinaMountains/index.shtml)"
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
@@ -96,7 +100,7 @@ author:
   name             : "Matt DePorter"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "My name is Matt DePorter. I'm a Developer/SRE, Husband and doer of most things."
-  location         : "Arizona"
+  location         : "Tucson, Arizona"
   email            :
   links:
     - label: "Email"
@@ -117,13 +121,16 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube-square"
+      url: "https://www.youtube.com/user/nfaction"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/spikebyte"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube-square"
+      url: "https://www.youtube.com/user/nfaction"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
@@ -136,6 +143,9 @@ footer:
     - label: "Bitbucket"
       icon: "fab fa-fw fa-bitbucket"
       # url:
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/spikebyte"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url:
@@ -281,3 +291,4 @@ defaults:
       share: true
       related: true
       show_date: true
+      toc: true
