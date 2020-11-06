@@ -16,14 +16,14 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "mattofalltrades"
+title                    : "Matthew DePorter"
 title_separator          : "|"
-subtitle                 : "master of none" # site tagline that appears below site title in masthead
-name                     : "Matt DePorter"
-description              : "matt of all trades"
+subtitle                 : "mattofalltrades, master of none" # site tagline that appears below site title in masthead
+name                     : "Matthew DePorter"
+description              : "matt of all trades, master of none..."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : nfaction/mattofalltrades # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : nfaction/nfaction.github.io # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : https://avatars2.githubusercontent.com/u/1879850?s=400&u=83c9db9211c9ffdd60a23c6ac6e490355bc88402&v=4 # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -97,9 +97,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Matt DePorter"
+  name             : "Matthew DePorter"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "My name is Matt DePorter. I'm a Developer/SRE, Husband and doer of most things."
+  bio              : "My name is Matthew DePorter. I'm a Developer/SRE, Husband and doer of most things."
   location         : "Tucson, Arizona"
   email            :
   links:
