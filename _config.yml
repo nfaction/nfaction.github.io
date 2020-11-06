@@ -124,6 +124,9 @@ author:
     - label: "YouTube"
       icon: "fab fa-fw fa-youtube-square"
       url: "https://www.youtube.com/user/nfaction"
+    - label: "Stack Overflow"
+      icon: "fab fa-stack-overflow"
+      # url: "https://stackoverflow.com/users/14539203/spikebyte"
 
 # Site Footer
 footer:
@@ -145,7 +148,7 @@ footer:
       # url:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/spikebyte"
+      # url: "https://twitter.com/spikebyte"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url:
@@ -219,7 +222,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/Phoenix # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
@@ -234,7 +237,6 @@ plugins:
 # mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
-  - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
@@ -287,8 +289,26 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: true
       share: true
       related: true
       show_date: true
       toc: true
+      sidebar:
+        nav: "docs"
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      classes: wide
+      sidebar:
+        nav: "docs"
+  # _foo
+  - scope:
+      path: ""
+      type: foo
+    values:
+      layout: single

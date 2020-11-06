@@ -1,3 +1,12 @@
 main:
   - title: "House"
     url: /house/
+docs:
+  - title: "Tutorials"
+    children:
+      - title: "SSH"
+        url: /linux/ssh/
+  - title: "Tips/Tricks"
+    children:
+      - title: "Productivity"
+        url: /categories/#productivity
