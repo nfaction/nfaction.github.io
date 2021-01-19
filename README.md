@@ -28,3 +28,5 @@ bundle install
 
 bundle exec jekyll serve --watch -H 0.0.0.0
 ```
+
+Open browser at IP address: `http://<IP>:4000`
