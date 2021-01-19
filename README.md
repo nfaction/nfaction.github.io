@@ -5,9 +5,9 @@
 ```
 sudo gem install bundler jekyll
 
-git clone git@github.com:nfaction/mattofalltrades.git
+git clone git@github.com:nfaction/nfaction.github.io.git
 
-cd mattofalltrades
+cd nfaction.github.io
 
 bundle install
 
