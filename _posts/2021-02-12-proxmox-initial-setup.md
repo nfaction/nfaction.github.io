@@ -18,6 +18,8 @@ This guide assumes knowledge of `vim` and basic Linux administration. It also as
 
 > It's absolutely critical that the PVE OS was installed as a `UEFI` OS. Usually in the boot menu in the `BIOS/UEFI` menu, it will show the installer USB disk as `UEFI: <Installer USB Drive>`
 
+If you need help with the installation of `Proxmox VE`, you can check out the previous setup post [here.](/proxmox/proxmox-install/)
+
 Sometimes you may boot into an `(initramfs)`, run these commands: `zpool import -R / rpool` then `exit`.
 
 At this time, browse to: <https://<pve-ip>:8006>

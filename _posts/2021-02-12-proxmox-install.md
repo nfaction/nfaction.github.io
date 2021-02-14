@@ -2,6 +2,8 @@
 title: How to install Proxmox VE
 classes: wide
 comments: true
+author_profile: true
+related: true
 categories:
   - proxmox
 tags:
@@ -73,15 +75,15 @@ Follow the steps until you hit the `Options` button.
 
 Click on the `Options` button and select `zfs (RAID1)` from the `Filesystem` dropdown. (**NOTE:** If you only have one disk, use the `zfs (RAID0)` option instead, this is setting when only one disk will be used.) See this in the option below:
 
-<img src="https://drive.google.com/uc?id=151MlNcl3Cadb8qAYfZLHxqEApCe3kEd5" alt="Filesystem" height=480/>
+<img src="https://drive.google.com/uc?id=151MlNcl3Cadb8qAYfZLHxqEApCe3kEd5" alt="Filesystem" height=100/>
 
 Once `zfs (RAID1)` has been selected, set `Harddisk 0` and `Harddisk 1` to the two disks you plan to use for the OS install. (Above you'll see that I am using two `500GB` SSDs). Be sure to select `-- do not use --` for any disk you do not want to use for the OS install. Any disk used in this setup will be erased. (**NOTE:** Be absolutely sure you select the correct disks, otherwise `PERMANENT DATA LOSS` will occur.)
 
-<img src="https://drive.google.com/uc?id=1oyVI-GkD9PyWJFtpkNuWIxVtHzpeVKMk" alt="Disk Setup" height=480/>
+<img src="https://drive.google.com/uc?id=1oyVI-GkD9PyWJFtpkNuWIxVtHzpeVKMk" alt="Disk Setup" height=200/>
 
 Under `Advanced Options`, the default settings below are just fine. I would just recommend verifying that `compress` is `on`.
 
-<img src="https://drive.google.com/uc?id=1WrFIJu51pMudXDJDpQCCCkShV7rE_kne" alt="" height=480/>
+<img src="https://drive.google.com/uc?id=1WrFIJu51pMudXDJDpQCCCkShV7rE_kne" alt="" height=100/>
 
 Once finished, click `OK`. When that window dissappears, the screen will look like the below image. Take note that you should see the `Target: zfs (RAID1)` at the bottom of the screen.
 
@@ -123,4 +125,4 @@ Congratulations! You have a fresh install of `Proxmox VE`.
 
 I have a setup guide article that will help you turn this basic install into a powerful all-in-one hypervisor.
 
-Take a look at that guide [here.](2021-02-12-proxmox-initial-setup.md)
+Take a look at that guide [here.](/proxmox/proxmox-initial-setup/)
