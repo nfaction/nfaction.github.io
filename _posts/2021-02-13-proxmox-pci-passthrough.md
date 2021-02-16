@@ -204,7 +204,7 @@ You should see something like this after you are done:
     3. Select `10/2016/2019` for `Version:`
     4. Click `Next`
 4. `System`
-    1. Select `Default` for `Graphic card:`
+    1. Select `VirtIO-GPU` for `Graphic card:`
     2. `VirtIO SCSI` for `SCSI Controller:`
     3. `Qemu Agent:`, Checked
     4. `OVMF (UEFI)` for `BIOS:`
@@ -249,23 +249,95 @@ Perform the following:
 
 ### Install Windows
 
-1. Enable EFI Boot
-	1. Turn on Storage OPRom (Enables UEFI menus in boot)
-2. Enable Virtualization and VT-d
-3. Boot into OS
-4. Follow steps here: https://elijahliedtke.medium.com/home-lab-guides-proxmox-6-pci-e-passthrough-with-nvidia-43ccfb9424de
-5. Enable systemd boot settings from this example: https://hackmd.io/@edingroot/SkGD3Q7Wv#Guest-OS-Config
-6. Works!
-7. Setup parsec: https://forums.serverbuilds.net/t/guide-remote-gaming-on-unraid/4248/7
+1. Select `Console` on the left, then click `Start` in the upper right.
+2. As soon as you see the `Press any key to boot from CD or DVD..`, Hit `ENTER` on your keyboard. If you miss it, reboot and try again.
+3. Once the Windows installer loads, fill out all the details until you hit `Where do you want to install Windows?`, then hit `Load driver`.
+        ![Load driver](https://drive.google.com/uc?id=1h_4gXrxo9m1p3Cb3-cQGAeK7Xnbt3_2s)
+4. Click `Browse`, then `Browse` again, double click on the `virtio-win-0.1.190` disk under `This PC`, then scroll down and click on `vioscsi`, then `w10`, then `amd64`, then hit `OK`. Hit `Next` until you get back to the install menu. **NOTE:** If you used the non-Intel network driver, the driver can be found here as well.
+        ![Select driver](https://drive.google.com/uc?id=1poQubdeEvg5oUmsZBTkC6NzwYGCO5i-S)
+        ![RedHat driver](https://drive.google.com/uc?id=1wsfbcjUcM2bdaNmHVPKExiM0YvOH77w-)
+5. Now that the disk is found, select `Drive 0 Unallocated Space` and hit `Next`.
+6. Finish the Windows install.
+7. On first Windows boot while going through personalization settings, be sure to DISABLE all the settings on `Choose privacy settings for your device`, they love to track you...
+
+### Configure Windows and install GPU drivers
+
+Perform the following:
+
+1. Make sure that a password is set for this user. Select Start, Settings, Accounts, Sign-in options. Under Password, select the Change button and follow the steps.
+2. Enable `Remote Desktop`. Select Start, Settings, System, Remote Desktop. Use the slider to enable Remote Desktop.
+3. Connect to host using `RDP`.
+4. Install the `Qemu Agent`. Click on `Windows Explorer`, `This PC`, `virtio-win-0.1.190`, `guest-agent`, then install `qemu-ga-x86_64`.
+5. Open `Device Manager` by right-clicking the Windows logo (start button) and selecting `Device Manager`. Once open, install all the missing drivers for the `Other devices/PCI *`. Right-click each one and select `Update driver`, then `Browse my computer for drivers`, Click `Browse` then select the `virtio-win-0.1.190` disk under `This PC` and hit `Next`. Install the drivers until there are no more exclamation drivers under `Other devices`. It should look like this when complete:
+        Before:
+        ![Install other driver](https://drive.google.com/uc?id=1bq9PW78fBlca6gIpP6Xyvb3fXiM8jCX4)
+        After:
+        ![After other driver install](https://drive.google.com/uc?id=1-MmnlalRWa8oH4ZiuY54SfPvjxQqouMh)
+6. Download and install the Nvidia drivers. Download the drivers from this [link.](https://www.nvidia.com/Download/index.aspx). Install the drivers, but don't install the `GeForce Experience`.
+7. Shut down the VM through Windows.
+8. Select `Hardware`, click `PCI Device`, then enable all check boxes, i.e. `Primary GPU`.
+9. Start up the VM.
+10. Verify that the GPU is working properly. Right-click start menu, and hit `Device Manager`, if it's working you won't see an exclamation point on the GPU. Open up the `Display adapters` and right-click the GPU and 
+        
+    Properly working GPU (No `Code 43`):
+    ![Device-manager-GPU](https://drive.google.com/uc?id=1H5IA4Bdxb6DPQI1dbAnTWe67V9OPfZ2S)
+    
+    Check `Task Manager` too:
+    ![Task-Manager](https://drive.google.com/uc?id=1vZ0-kk_tMrigCx6z4mbQ0Q2L5wLug199)
+
+11. If everything is working properly, you can connect the GPU to an external display. You may have to reboot the VM, but once it comes up, you should see the external display show video. If you don't, or if you only see the background, you may have to set the display to: `Duplicate these displays`. I'd also recommend setting the resolution to `1920 x 1080`. You'll get better gaming performance and will be able to have a better streaming experience.
+12. Last, but not least, set a static IP address so that it's easier to connect to this host. If you're ever in a situation where you don't know the IP, you can click on the VM on the left side, hit `Summary` and you should see the VM's IP under the `IPs` section.
+
+If you made it this far without issues, congratulations!
+
+## Configure remote gaming
+
+This section will likely vary depending on how you want to use this VM. Instead of repeat steps from other guides, I'll just link them here.
+
+### Configure streaming
+
+I'd strongly suggest you set up streaming so that this host can be used remotely. This is a great guide put together by the extremely helpful folks at `serverbuilds.net`.
+
+This guide was built for `UnRAID`, which we aren't using here, but the streaming part of this guide directly applies here. Go ahead and follow the instructions outlined [here.](https://forums.serverbuilds.net/t/guide-remote-gaming-on-unraid/4248/11)
+
+I'd recommend installing the following:
+
+* [Parsec](https://parsec.app/)
+* [Rainway](https://rainway.com/)
+* [Other packages from Ninite](https://ninite.com/)
+
+### Configure VM as a physical host
+
+If you plan to use this VM as a physical machine, there are a few things to consider. It might be helpful to set this VM to start on `Proxmox` boot, click on the VM on the left, hit `Options`, double-click `Start at boot` and check the box.
+
+In order to use this VM, you'll need to have a way to hook up a keyboard and mouse. I'd suggest passing through an entire USB port so that you can attach a USB hub to connect a series of devices. To do this, be sure the VM is shutdown before you do anything, then click the VM on the left-hand side, click `Hardware`, click `Add`, then select `USB Device`, click the option `Use USB Port` and select a port. Once it has been attached, boot the VM. You should be able to use those newly attached devices.
+
+If you use an external monitor, or TV, I'd recommend using an HDMI port because you'll be able to get audio from the video card so that you don't have to install an external audio card. You could also use a USB audio card, but it's up to you.
+
+More documentation for USB passthrough can be found [here.](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_usb_passthrough)
 
 ## Troubleshooting
 
-* Code (43)
-* Passthrough issues
+* PCI Passthrough errors/issues
+  * Re-check all the setup and verification steps above.
+  * Be absolutely sure that the system booted via `UEFI`.
+  * Make sure that `Display` is set to `VirtIO-GPU`.
+  * Also verify that the resolution is set properly for you displays.
+* GPU `(Code 43)` Error
+  * This can be a real tough one, with an absolute TON of potential issues that would cause this, so be patient and look over your settings.
+  * First try all the steps in the bullet-points above.
+  * Try to uninstall and re-install the drivers for the GPU. Here's some helpful resources for this option [here.](https://www.crazywebstudio.co.th/2019/how-to-solve-code-43-nvidia-gtx10xx-or-rtx20xx-gpu-problem/)
+  * Make sure that your video is new enough to support PCI passthrough.
+  * Double-check your hardware for compatability.
+  * Re-verify that `VT-d` has been enabled in the `UEFI/BIOS`.
+  * Be absolutely sure that your kernel has loaded the `iommu` settings.
+
+If all else fails, check out the resources below. Take your time and check off each item as you verify it. It's truly shocking how one tiny setting being off can cause it all to fail.
 
 ## References
 
 * [Proxmox VE 6.3-3 PCI(e) Passthrough Guide](https://elijahliedtke.medium.com/home-lab-guides-proxmox-6-pci-e-passthrough-with-nvidia-43ccfb9424de)
 * [Proxmox VE Alternative install with Systemd-boot](https://hackmd.io/@edingroot/SkGD3Q7Wv#Guest-OS-Config)
 * [Proxmox VE Official PCIe Passthrough guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_pci_passthrough)
+* [Proxmox VE 6.1 Ultimate Beginners Guide to GPU Passthrough](https://www.reddit.com/r/homelab/comments/b5xpua/the_ultimate_beginners_guide_to_gpu_passthrough/)
 * [Remote Gaming Guide](https://forums.serverbuilds.net/t/guide-remote-gaming-on-unraid/4248/11)
