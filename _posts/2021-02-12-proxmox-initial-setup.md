@@ -35,8 +35,9 @@ efibootmgr -v
 Look for something along these lines:
 
 ``` bash
-Boot0000* Linux Boot Manager	HD(2,GPT,<disk-uuid>)/File(\EFI\SYSTEMD\SYSTEMD-BOOTX64.EFI)
-Boot0001* Linux Boot Manager	HD(2,GPT,<disk-uuid>)/File(\EFI\SYSTEMD\SYSTEMD-BOOTX64.EFI)
+BootCurrent: 0007
+...
+Boot0007* UEFI OS	HD(2,GPT,<disk-uuid>)/File(\EFI\BOOT\BOOTX64.EFI)..BO
 ```
 
 Check the installed version (Should read at least `6.3-X`):
