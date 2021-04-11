@@ -6,6 +6,8 @@ docs:
     children:
       - title: "SSH"
         url: /linux/ssh/
+      - title: "ZFS"
+        url: /categories/#zfs
       - title: "Proxmox VE"
         url: /categories/#proxmox
   - title: "Tips/Tricks"
