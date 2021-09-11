@@ -277,9 +277,13 @@ If there is a need to add additional networks to the `PVE` hypervisor, install t
 Install the Dark Theme like this:
 
 ``` bash
-wget https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.py
+# Oneliner
+bash <(curl -s https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.sh ) install
 
-python3 PVEDiscordDark.py
+# OR manual
+wget https://raw.githubusercontent.com/Weilbyte/PVEDiscordDark/master/PVEDiscordDark.sh
+
+bash PVEDiscordDark.sh install
 
 [~] PVEDiscordDark Utility
 
