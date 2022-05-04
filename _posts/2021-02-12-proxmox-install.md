@@ -49,7 +49,7 @@ This part of the tutorial will likely vary in a significant way. Most Supermicro
 
 Navigate using the arrow keys to `Advanced`, then `CPU Configuration`. Be sure that `Hyper-threading` and `Intel Virtualization Technology` is set to `Enabled`.
 
-![Intel Virtualization Technology](https://drive.google.com/uc?id=1hgvGSMF10OxubKM2LZ4fhzVqZHX5IeIl)
+![Intel Virtualization Technology](../assets/images/proxmox/Intel-Virtualization-Technology.jpgIntel-Virtualization-Technology.jpg)
 
 Hit `Escape`, then navigate to `Chipset Configuration`, `North Bridge`, then `Integrated IO Configuration`. Be sure that `Intel(R) VT-d` is set to `Enabled`.
 
