@@ -49,11 +49,11 @@ This part of the tutorial will likely vary in a significant way. Most Supermicro
 
 Navigate using the arrow keys to `Advanced`, then `CPU Configuration`. Be sure that `Hyper-threading` and `Intel Virtualization Technology` is set to `Enabled`.
 
-![Intel Virtualization Technology](../assets/images/proxmox/Intel-Virtualization-Technology.jpgIntel-Virtualization-Technology.jpg)
+{% include figure image_path="../assets/images/proxmox/Intel-Virtualization-Technology.jpg" alt="Intel Virtualization Technology" %}
 
 Hit `Escape`, then navigate to `Chipset Configuration`, `North Bridge`, then `Integrated IO Configuration`. Be sure that `Intel(R) VT-d` is set to `Enabled`.
 
-![Intel(R) VT-d](https://drive.google.com/uc?id=1pSYzCaqPxIbDoJUFbt2F1MGNr00ZNAAu)
+{% include figure image_path="../assets/images/proxmox/Intel-VT-d.jpg" alt="Intel(R) VT-d" %}
 
 Hit `Escape` three times, then navigate to `PCIe/PCI/PnP Configuration`. Set `Launch Storage OpROM policy` to `UEFI only`, and `VGA Priority` to `Onboard`. (**NOTE:** The `Onboard` setting is especially important for `PCI/GPU` passthrough, but also makes using `IPMI` better as it will allow for full remote troubleshooting as well)
 
