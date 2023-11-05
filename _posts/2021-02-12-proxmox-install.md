@@ -53,15 +53,15 @@ Navigate using the arrow keys to `Advanced`, then `CPU Configuration`. Be sure t
 
 Hit `Escape`, then navigate to `Chipset Configuration`, `North Bridge`, then `Integrated IO Configuration`. Be sure that `Intel(R) VT-d` is set to `Enabled`.
 
-{% include figure image_path="../assets/images/proxmox/Intel-VT-d.jpg" alt="Intel(R) VT-d" %}
+{% include figure image_path="/assets/images/proxmox/Intel-VT-d.jpg" alt="Intel(R) VT-d" %}
 
 Hit `Escape` three times, then navigate to `PCIe/PCI/PnP Configuration`. Set `Launch Storage OpROM policy` to `UEFI only`, and `VGA Priority` to `Onboard`. (**NOTE:** The `Onboard` setting is especially important for `PCI/GPU` passthrough, but also makes using `IPMI` better as it will allow for full remote troubleshooting as well)
 
-![Launch Storage OpROM policy](https://drive.google.com/uc?id=1R4EmZJSNEhfQRZdwO5Byn9OIzoYC4E-i)
+{% include figure image_path="/assets/images/proxmox/UEFI-setting.jpg" alt="Launch Storage OpROM policy" %}
 
 Hit `Escape` and use the arrow keys to navigate to `Boot` menu. Set the `Boot Mode Select` option to `UEFI`. Also be sure that the `UEFI` boot device priority to use the `USB` installation media, then be sure that this `USB` disk is set as the first boot device.
 
-![Boot Mode Select](https://drive.google.com/uc?id=1eC21A02QBCiXjL4d_vhyBhVqCQBw1fUR)
+{% include figure image_path="/assets/images/proxmox/UEFI-boot.jpg" alt="Boot Mode Select" %}
 
 Exit and save changes and reboot.
 
@@ -75,7 +75,7 @@ Follow the steps until you hit the `Options` button.
 
 Click on the `Options` button and select `zfs (RAID1)` from the `Filesystem` dropdown. (**NOTE:** If you only have one disk, use the `zfs (RAID0)` option instead, this is setting when only one disk will be used.) See this in the option below:
 
-<img src="https://drive.google.com/uc?id=151MlNcl3Cadb8qAYfZLHxqEApCe3kEd5" alt="Filesystem" height=100/>
+![image-right]({{ "/assets/proxmox/pve-zfs-selection.jpg" | relative_url }}){: .align-right}
 
 Once `zfs (RAID1)` has been selected, set `Harddisk 0` and `Harddisk 1` to the two disks you plan to use for the OS install. (Above you'll see that I am using two `500GB` SSDs). Be sure to select `-- do not use --` for any disk you do not want to use for the OS install. Any disk used in this setup will be erased. (**NOTE:** Be absolutely sure you select the correct disks, otherwise `PERMANENT DATA LOSS` will occur.)
 
